@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  
+  const [value, setValue] = useState("O");
+  const [player, changePlayer] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="row">
+        <h1 className="text-center" onClick={() => {
+          setValue(player === 0 ? "X": "O");
+          changePlayer(player === 0 ?  1 : 0);
+        }}>{value}</h1>
+      </div>
     </div>
   );
 }
