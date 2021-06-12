@@ -1,19 +1,34 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Tile from './Tile';
 
 function App() {
-  
-  const [value, setValue] = useState("O");
+
   const [player, changePlayer] = useState(0);
 
   return (
     <div className="container">
-      <div className="row">
-        <h1 className="text-center" onClick={() => {
-          setValue(player === 0 ? "X": "O");
-          changePlayer(player === 0 ?  1 : 0);
-        }}>{value}</h1>
+      <div>
+        <h1 className="text-center">Tic - Tac - Toe</h1>
+      </div>
+
+      <div className="row d-flex justify-content-center">
+        <Tile value={"-"} onClick={() => changePlayer(player === 0 ? 1 : 0)}/>
+        <Tile value={"-"} onClick={() => changePlayer(player === 0 ? 1 : 0)}/>
+        <Tile value={"-"} onClick={() => changePlayer(player === 0 ? 1 : 0)}/>
+      </div>
+
+      <div className="row d-flex justify-content-center">
+        <Tile value={"-"}/>
+        <Tile value={"-"}/>
+        <Tile value={"-"}/>
+      </div>
+
+      <div className="row d-flex justify-content-center">
+        <Tile value={"-"}/>
+        <Tile value={"-"}/>
+        <Tile value={"-"}/>
       </div>
     </div>
   );
