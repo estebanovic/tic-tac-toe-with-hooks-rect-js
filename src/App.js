@@ -5,7 +5,7 @@ import Tile from './Tile';
 
 function App() {
 
-  const [player, changePlayer] = useState(0);
+  const [player, changePlayer] = useState("X");
 
   return (
     <div className="container">
@@ -14,21 +14,21 @@ function App() {
       </div>
 
       <div className="row d-flex justify-content-center">
-        <Tile value={"-"} onClick={() => changePlayer(player === 0 ? 1 : 0)}/>
-        <Tile value={"-"} onClick={() => changePlayer(player === 0 ? 1 : 0)}/>
-        <Tile value={"-"} onClick={() => changePlayer(player === 0 ? 1 : 0)}/>
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
       </div>
 
       <div className="row d-flex justify-content-center">
-        <Tile value={"-"}/>
-        <Tile value={"-"}/>
-        <Tile value={"-"}/>
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
       </div>
 
       <div className="row d-flex justify-content-center">
-        <Tile value={"-"}/>
-        <Tile value={"-"}/>
-        <Tile value={"-"}/>
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
+        <Tile value={"-"} clickFunction={() => changePlayer(player === "X" ? "O" : "X")} player={player} />
       </div>
     </div>
   );
