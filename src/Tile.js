@@ -9,8 +9,9 @@ function Tile(props) {
     return (
         <div className="col-2 m-2 text-center fs-2 text-light tile"
             onClick={() => {
+                props.onClickTile();
+                props.onCLickPlayer();
                 setValue(props.player);
-                props.clickFunction();
             }}>
             {value}
         </div >
