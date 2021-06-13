@@ -9,10 +9,9 @@ function Tile(props) {
     return (
         <div className={"col-2 text-center fs-2 tile " + props.position}
             onClick={() => {
-                setValue(props.player);
                 props.onClickTile();
             }}>
-            {value}
+            {props.value}
         </div >
     )
 }
