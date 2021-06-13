@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Tile from './Tile';
-import Alert from './Alert';
 
 function App() {
 
+  const [start, setStart] = useState(false);
+  const [isDisabled, toDisable] = useState(false);
   const [player, changePlayer] = useState("X");
   const [tiles, changeTiles] = useState(["-", "-", "-", "-", "-", "-", "-", "-", "-"]);
   const [message, setMessage] = useState(null);
@@ -52,29 +53,52 @@ function App() {
 
   function onClickTile(num) {
 
-    console.log(tiles[num] )
-    if(tiles[num] === "-"){  
-      changePlayer(player === "X" ? "O" : "X");
-      tiles[num] = player;
-    }
+    if (start) {
+      console.log(tiles[num])
+      if (tiles[num] === "-") {
+        changePlayer(player === "X" ? "O" : "X");
+        tiles[num] = player;
+      }
 
-    if(winner === null){
-      checkIfWon();
+      if (winner === null) {
+        checkIfWon();
+      }
     }
+  }
+
+  function startButton() {
+    setStart(true);
+    toDisable(true);
+  }
+
+  function resetButton() {
+    changePlayer("X");
+    changeTiles(["-", "-", "-", "-", "-", "-", "-", "-", "-"]);
+    win(null);
   }
 
   return (
     <div className="container">
       <div>
-        <h1 className="text-center">Tic - Tac - Toe</h1>
+        <h1 className="text-center title">Tic - Tac - Toe</h1>
       </div>
       <div className="row d-flex justify-content-center">
         <div className="col-md-6 py-3">
           {!!winner &&
             (
-              <Alert className={"alert-secondary"} text={message}/>
+              <div className={"alert alert-secondary"} role="alert">
+                {message}
+              </div>
             )
           }
+        </div>
+      </div>
+      <div className="row m-2 d-flex justify-content-center m-5">
+        <div class="col-1">
+          <button class="btn btn-primary" type="button" disabled={isDisabled} onClick={startButton}>Start</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-primary" type="button" onClick={resetButton}>Reset</button>
         </div>
       </div>
 
