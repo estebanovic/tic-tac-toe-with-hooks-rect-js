@@ -7,11 +7,10 @@ function Tile(props) {
     const [value, setValue] = useState(props.value);
 
     return (
-        <div className="col-2 m-2 text-center fs-2 text-light tile"
+        <div className={"col-2 text-center fs-2 tile " + props.position}
             onClick={() => {
-                props.onClickTile();
-                props.onCLickPlayer();
                 setValue(props.player);
+                props.onClickTile();
             }}>
             {value}
         </div >
